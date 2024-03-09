@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!--1-->
+      <h1>hello可视化工具测试</h1>
+      <p>这是一个段落</p>
+      <p>这是第二个<br>段落</p>
+  <!--2-->
+      <ol>
+        <li>列表项1</li>
+        <li>列表项2</li>
+        <li>列表项3</li>
+      </ol>
+      <ul>
+        <li>列表项1</li>
+        <li>列表项2</li>
+        <li>列表项3
+          <ol>
+            <li>列表1</li>
+            <li>列表2</li>
+            <li>列表3</li>
+          </ol>
+        </li>
+      </ul>
+  <!--3-->
+      <a href="http://www.atguigu.com" target="_self">尚硅谷</a>
+      <!--相对路径-->
+      <a href="../study-html/常见标签.html" target="_blank">返回上一级标签</a>
+      <!--绝对路径-->
+      <a href="/vscodeGit/VS-code/study-html/">到这里</a>
+  <!--4-->
+      <img src="/vscodeGit/VS-code/study-html/img/微信图片_20240307165427.jpg" width="300px" title="追风的人" alt="失败时才显示">
+  <!--5-->
+      <h3 style="text-align:center">学生信息表</h3>
+      <table border="1px" style="margin:0px auto">
+        <thead>
+          <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>分数</th>
+            <th>备注（新加测试）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>小米</td>
+            <td>18</td>
+            <td>88</td>
+            <td rowspan="2">前三名加油</td>
+          </tr>
+          <tr>
+            <td>小六</td>
+            <td>18</td>
+            <td>99</td>
+          </tr>
+        </tbody>
+        <tfoot>o
+          <tr>
+            <td>平均分</td>
+            <td></td>
+            <td>93.5</td>
+          </tr>
+        </tfoot>
+      </table>
+  <!--6-->
+      <form action="html操作指南.txt" method="get">
+        <!--添加表单项标签 用户输入信息的标签-->
+        <input type="hidden" name="id" value="user">            <!--希望提交一些特定的信息。但是考虑到安全或用户操作问题。不希望该数据发生改变-->
+        <input type="text" name="pid" value="user1" readonly>   <!--也可以采用加入readonly方式，使用户不能够修改-->
+        <input type="text" name="pid" value="user2" disabled> <br><!--也可以采用加入disabled方式，使用户不能够修改-->
+        用户名：<input type="text" name="username"> <br>
+        密码： <input type="password" name="userpwd"> <br>
+        性别： <input type="radio" name="gender" value="男" checked="true">男
+        <input type="radio" name="gender" value="女">女 <br>
+        爱好： <input type="checkbox" name="hobby" value="1">篮球dd
+        <input type="checkbox" name="hobby" value="2">羽毛球
+        <input type="checkbox" name="hobby" value="3" checked>乒乓球
+        <input type="checkbox" name="hobby" value="4">毽球 <br>
+        籍贯：
+        <select name="pro" id="space">
+            <option value="1">北京</option>
+            <option value="2">上海</option>
+            <option value="3">杭州</option>
+            <option value="4">深圳</option>
+            <option value="0" selected>请选择</option>
+        </select>                                         <br>
+        个人简介：
+        <textarea name="introduce" id="intro" cols="30" rows="10"></textarea>
+        <input type="file" value="文件上传">                               <br>
+        <input type="submit" value="登录">
+        <input type="reset" value="清空">
+
+      </form>
+  <!--7-->
+      <div style="border: 1px solid skyblue; text-align: center; width: 188px; height: 108px; background-color: antiquewhite; margin: 0px auto; padding-top: 84px;">样式布局</div>
+      <div style="border: 1px solid skyblue; text-align: center; width: 188px; height: 108px; background-color: rgb(51, 148, 208); margin: 0px auto; padding-top: 84px;">样式布局</div>
+      <div>今天是 <span style="font-size: 12px; color: rgb(45, 174, 203);"> 2024年3月9日</span>，是对前端复习的 <span style="font-size: 16px; color: coral;">第一天</span></div>
+      
+
+   <!--
+    1 标题   h1 - h6 且从大到小
+      段落   p标签
+      换行   br 直接换行 / hr 换行并带一个分割线
+    2 列表   ol：有序列表（可嵌套）
+           ul：无序列表（可嵌套）
+           li：列表项（有序/无序都用） 
+    3 超链接 a 
+              herf    用于定义跳转目标资源的地址
+                    完整url "http://www.atguigu.com"
+                    相对路径 以当前资源的所在路径为出发点找目标资源
+                            ./ 表示当前资源所在的路径，可以省略不写
+                            ../表示当前路径的上一层，需要时必须写出
+                    绝对路径 无论资源在哪，使用固定的位置作为出发点去找目标资源
+              target  用于定义目标资源的打开方式
+                      _self  在当前窗口打开目标资源
+                      _blank 在新窗口打开目标资源
+    4 图片 img 
+              scr   用于定义图片的连接
+              title 用于定义鼠标悬停时显示的文字
+              alt   用于定义图片加载失败时显示的提示文字
+    5 表格 table 整张表格
+           thead 表头（可写可不写）
+           tbody 表体
+           tfoot 表尾
+                tr 表格中的一行
+                    td 行中的一个单元格
+                    th 自带加粗和剧中的td
+            rowspan="n" 加在td里，向下侵占n格
+            colspan="n" 加在td里，向右侵占n格
+    6 表单 form 其内部用于定义让用户输入信息的表单项标签
+              action form属性，用于定义信息提交的服务器地址
+                  url/相对路径/绝对路径
+              method form属性，用于定义信息的提交方式
+                  get方式 1.数据会缀到url后，以？作为参数开始的标识，多个参数用&隔开 形式url？key=value&key=value&key=value
+                          2.数据直接暴露在地址栏上，相对不安全
+                          3.地址栏长度有限，所以提交的数据量不大
+                          4.地址栏上，只能是字符，不能提交文件
+                  post方式，数据会通过请求体发送，不会缀到url后
+                          1.参数默认不放在url后
+                          2.数据不会直接暴露在地址栏上，相对安全
+                          3.数据是单独打包通过请求体发送，提交的数据量比较大
+                          4.请求体中，可以是字符，也可以是字节数据，可以提交文件
+                          5.相较于get效率略低
+            表单项标签 1.表单项标签一定要定义name属性，该属性用于明确提交时的参数名 
+                      2.还需要定义value属性，该属性用于明确提交时的实参
+            input
+                type 输入信息的表单项类型
+                    text     单行普通文本框
+                    password 密码框
+                    submit   提交按钮
+                    reset    重置按钮  
+                    radio    单选框
+                             多个单选框使用相同的name属性值，则会有互斥效果；如选择男女时两个input里面的name必须相同           
+                             checked  默认自动选中此选项
+                    checkbox 多选框，同时可以选中多个
+                    file     可以拖拽文件进行上传
+                    hedden   隐藏域，不显示在页面上，提交时会展示  
+            textarea 文本域，显示多行文字，相当于一个下拉框
+            select   下拉框
+                    option 默认选中的情况下可以添加selected
+    7 布局   css样式设置，通过style属性进行设置：style="样式名：样式值；样式名：样式值：......"
+                   块元素： 自己独占一行的元素 块元素的css样式的宽高一般都是生效的
+                        div 
+                   行元素： 自己不会独占一行的元素 行内元素的css样式宽高一般都是不生效的
+                        span
+    8 转义字符 空格：&nbsp
+              <   : &lt
+              >   : &gt
+              &   : &amp
+
+
+
+
+
+
+-->
+</body>
+
+</html>
