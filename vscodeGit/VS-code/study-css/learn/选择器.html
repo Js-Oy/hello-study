@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>无语义化标签和标签选择器</title>
+  <style>
+    /*标签选择器*/
+      p span{
+        background-color: darkorange;
+        font-size: 18px;
+        color: aquamarine;
+      }
+     em{
+      color: lawngreen;
+      font-size: 18px;
+     }
+     /*类选择器*/
+     .lei{
+      color: brown;
+     }
+     /*id选择器 */
+     #id{
+      background-color: aqua;
+     }
+     /*
+     全局选择器 一般不应用，就先注销了
+     *{
+      color: antiquewhite;
+    }
+     */
+    
+     /*
+     属性选择器：
+        使用li[class],我们就能匹配任何有class属性的选择器。这匹配了除了第一项的所有项
+          li[class]{
+            color:  red;
+          }
+        li[class="a"]匹配带有一个a类的选择器，不过不会选中一部分值为a而另一部分是另一个用空格隔开的值的类
+          li[class="a"]{
+            color:red;
+          }
+        li[class~="a"]会匹配一个a类，不过也可以匹配一列用空格分开，包含a类的值，他选中了第二和第三项。
+          li[class~="a"]{
+            color:color;
+          }
+        li[class|="top"]匹配带有一个名为attr的属性的元素，其值可正为value，或者开始为value,后面紧接着一个连字符。
+          li[class|="top"]{
+            color:red;
+          }
+      */
+      /*
+      字符串模式匹配选择器：若要忽略大小写后面加一个i 如： li[class^="a" i]
+        li[class^="a"]选中里面以a开头的
+          li[class^="a"]{
+            color: chocolate;
+          }
+        li[class$="a"]选中以a结尾的
+          li[class$="a"]{
+          color:red;
+          }
+        li[class*="a"]选中其中含有a的元素
+          li[class*="a"]{
+            color:red ;
+          }
+      */
+           
+     /*普通伪类选择器 */
+        div p:first-child{
+        color: cadetblue;
+        }
+     /*行为伪类选择器 */
+        div a:link{
+          color: blue;
+        }
+        div a:hover{
+          color:yellow;
+        }
+        div a:active{
+          color: rgb(31, 207, 160);
+        }
+        div a:visited{
+          color: gainsboro;
+        }
+     /*关系选择器*/
+     /*1.交集选择器*/
+     p.tag{
+      color: blueviolet;
+     }
+     /*并集选择器*/
+     #hai,
+     .hello{
+      color: bisque;
+     }
+     /*后代选择器*/
+    .after p{
+      font-style: italic;
+      text-align: center;
+     }
+     /*子代选择器*/
+     .son>p{
+      font-size: 20px;
+      color: green;
+     }
+  </style>
+</head>
+<body>
+  <!--
+    div 块级标签
+    span行级标签
+    
+    没有语义化，可以适用css对这两个标签进行样式设置
+    css三大引入方式 行内，内嵌式，外联式
+    优先级：!important > 行内式 > id选择器 > 类选择器 > 标签选择器 > 通配符 > 继承的样式
+    相同优先级选择器，就近原则，谁在下面谁优先级高（style谁写的靠后，谁优先级高）
+  -->
+  <div>div-first</div>
+  <div>div-second</div>
+  <div>div-third</div>
+  <span>行级标签1</span> <span>行级标签2</span> <span>行级标签3</span>
+  <hr>
+  <!--
+    标签选择器：如p{ color：颜色 } 用于对标签中的内容进行样式设计
+  -->
+ 
+  <p><span>读书</span> 最大的意义之一是帮助个体实现超越，能够让你通过自己的努力给这些问题找到答案。
+    如果还没找到答案，也许只是你读的书不够多，经历的事也不够多。</p>
+  <p>如果你没有找到可以为之奋斗一生的目标，你除了在实践中寻找<em>答案</em>，也可以在书本中寻找。
+    如果你有了一个目标，你可以借助书本迅速进入自由王国，从而更容易接近你的目标。</p>
+    <hr>
+  <!--
+    类选择器：.类名{属性：属性值 }
+    标签中  ：class="类名"
+  --> 
+  <h3 class="lei">类选择器</h3>
+  <hr>
+  <!--
+    id选择器：#id名{属性名：属性值}
+    标签中  : id="id名"    注意：id名不能重复，且一个id只能作用于一个标签
+  -->
+  <p id="id">如果你有了一个目标，你可以借助书本迅速进入自由王国，从而更容易接近你的目标。</p>
+  <hr>
+  <!--
+    全局选择器 *{属性名：属性值}
+  -->
+
+  <!--
+    属性选择器：/字符串模式匹配选择器
+  -->
+  <ul>
+    <li>Item1</li>
+    <li class="a">Item2</li>
+    <li class="b a">Item3</li>
+    <li class="ab">Item4</li>
+    <li class="top-a">Item5</li>
+    <li class="top-b">Item6</li>
+  </ul>
+  <hr>
+  <!--
+    伪类选择器（总）：
+  -->
+  <div>
+    <p>如果还没找到答案，也许只是你读的书不够多，经历的事也不够多</p>
+    <p>如果还没找到答案，也许只是你读的书不够多，经历的事也不够多</p>
+    <p>如果还没找到答案，也许只是你读的书不够多，经历的事也不够多</p>
+    <a href="#">读书网</a>
+  </div>
+  <div>
+    <p>如果你有了一个目标，你可以借助书本迅速进入自由王国</p>
+    <p>如果你有了一个目标，你可以借助书本迅速进入自由王国</p>
+    <p>如果你有了一个目标，你可以借助书本迅速进入自由王国</p>
+  </div>
+  <ol>
+    <li>第一个</li>
+    <li>第二个</li>
+    <li>第三个</li>
+  </ol>
+  <hr>
+<!--
+  关系选择器：交集选择器：p.tag{}
+            并集选择器：p，tag{}
+            后代选择器：p .tag{}
+            子代选择器：p>.tag{}
+            兄弟选择器：通用：只要是和p相邻的兄弟就选中；p+.tag{}
+                       p所有兄弟都被选中：p~tag{}
+
+-->
+  <h3 class="tag">交集选择器</h3>
+  <p class="tag">从 Google Brain 离开的一年间，Yi Tay 和很多前同事一样，选择了一家创业公司，担任联合创始人兼首席科学家</p>
+  <p id="title">其所在的初创公司名为 Reka，除了有 Yi Tay 的加入，还有来自 Google、百度和 Meta、微软等大厂出来的研究员共同参与。</p>
+  <p>总体而言，从资源丰富、人才济济的大厂到人少事多的创业公司，Yi Tay 在这一年趟过了很多「坑」，也有太多的话想说了。</p>
+  <hr>
+  <h3 class="hello">并集选择器</h3>
+  <p class="hello">从 Google Brain 离开的一年间，Yi Tay 和很多前同事一样，选择了一家创业公司，担任联合创始人兼首席科学家</p>
+  <p id="hai">其所在的初创公司名为 Reka，除了有 Yi Tay 的加入，还有来自 Google、百度和 Meta、微软等大厂出来的研究员共同参与。</p>
+  <p>总体而言，从资源丰富、人才济济的大厂到人少事多的创业公司，Yi Tay 在这一年趟过了很多「坑」，也有太多的话想说了。</p>
+  <h3>后代选择器</h3>
+  <div class="after">
+    <p>更令人惊讶的是，即使是同一提供商的每个集群在稳健性方面也可能大不相同。</p>
+  <p>与我在 Google 使用 TPU 的经验相比，我对 GPU 的故障率感到完全震惊。</p>
+  <p>少一点原则，多一点 Yolo</p>
+    <p>这个要变色</p>
+  </div>
+  <h3>子代选择器</h3>
+  <div class="son">
+      <p>更令人惊讶的是，即使是同一提供商的每个集群在稳健性方面也可能大不相同。</p>
+    <p>与我在 Google 使用 TPU 的经验相比，我对 GPU 的故障率感到完全震惊。</p>
+    <div>
+     <p>这个不变色，但前面的伪类选择器起作用</p>
+    </div>
+     <p>少一点原则，多一点 Yolo</p>
+  </div>
+</body>
+</html>
