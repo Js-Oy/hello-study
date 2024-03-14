@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table,
+    tr,
+    th,
+    td {
+      border: 1px solid #000;
+    }
+
+    table {
+      border-collapse: collapse;
+      height: 80px;
+      margin: 0 auto;
+    }
+
+    h3 {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    //1.数字交换案例：
+    let num1 = 10
+    let num2 = 20
+    let smap
+    smap = num1
+    num1 = num2
+    num2 = smap
+    console.log(num1, num2)
+    //2。命名规则：不能用关键字，不能以数字开头，只能由数字，字母，下划线，$符号组成，且不能以数字开头，字母严格区分大小写
+    //3.输入姓名案例：
+    let name = prompt('请输入你的姓名')
+    let age = prompt('请输入你的年龄')
+    let gender = prompt('请输入你的性别')
+    document.write(name, age, gender)
+    //4.数组使用：输入和输出(下标从0开始)
+    let arr = [0, 1, 2, 3, 4, 5, 6]
+    console.log(arr[2])
+    console.log(arr)
+    //5.常量：值不会随新加改动而改变，且常量声明必须赋值
+    const PI = 3.14
+    //6.计算圆的面积案例
+    let R = prompt('请输入圆的周长')
+    document.write(PI * R * R)
+    //7.模板字符串：用反引号包含里面${变量名}
+    document.write(`我今年${num2}岁了`)
+    //8.检测数据类型：typeof 要检测的数据名(如typeof num1)
+    //9.类型转换(隐式/显示)：系统默认prompt，表单类型为string类型。
+    //隐式：1. +号两边只要有一个是字符串，都会把另一个转为字符串/。2.+作为正号解析可以转换为数字型。3.任何数据和字符串相加结果都是字符串；-，*，/等都会把数据转为数字类型
+    //显式：Number(数据名)/+prompt()：转换为数字型。parsentInt(数据名)：转换为整数型。parsentFloat(数据名)：转换为浮点型
+    //综合案例：
+    let press = prompt('请输入商品的价格')
+    let num = prompt('请输入商品的数量')
+    document.write(
+      `
+         <h3>订单确认</h3>
+         <table>
+         <tr>
+                  <th>商品名称</th>
+                  <th>商品价格</th>
+                  <th>商品数量</th>
+                  <th>总价</th>
+                  <th>收货地址</th>
+         </tr>    1888
+         <tr>
+                  <td>华为Mate80 pro Max</td>
+                  <td>${press}</td>
+                  <td>${num}</td>
+                  <td>${press * num}元</td>
+                  <td>河南师大</td>
+         </tr>
+         <table>
+        `
+    )
+
+
+  </script>
+
+
+</body>
+
+</html>
