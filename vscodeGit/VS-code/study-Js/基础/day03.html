@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*便利对象案例的css样式  */
+        /* h3{
+            text-align: center;
+        }
+        table{
+             margin: 0 auto;
+        }
+        table,th,tr,td{
+            border: 1px solid #000;
+            border-collapse: collapse;
+           
+        }
+        th{
+            background-color: gainsboro;
+        }
+        th,td{
+            margin: auto;
+            text-align: center;
+            width:100px;
+        }
+        table tr:hover{
+            background-color: gainsboro;
+        } */
+        div{
+            height: 66px;
+            width: 66px ;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div></div>
+    <!-- 函数学习 -->
+    <script>
+        /* // 利用函数打印多个九九乘法表 
+        //函数封装function(函数传参，形参){ 代码块 } 命名规范,小驼峰命名法，前缀应该为动词
+        function sheet99() {
+            for (let i = 1; i < 10; i++) {
+                for (let j = 1; j <= i; j++) {
+                    document.write(`<span>${j}*${i}=${i * j}</span>`)
+                }
+                document.write('<br>')
+            }
+        }
+        //函数调用
+        sheet99()
+        sheet99() */
+
+        /* //案例：利用函数求学生的总分
+        function Sum(arr){
+            let sum =0;
+            for(let i=0;i<arr.length;i++){
+                sum+=arr[i]
+            }
+            console.log(sum);
+        }
+        Sum([1,5,6,7,8,4,7,4,6]) */
+
+        /* //匿名函数之立即执行函数：(function(){})();必须加分号，不然不会识别调用 ；加在前面或者后面都可以
+        //写法一
+        (function () {
+            let num = 4
+            console.log(num);
+        })();
+        //写法二
+        ; (function () {
+            let sum = 100
+            console.log(sum);
+        })() 
+        (function(){
+            let sum = 100
+            console.log(sum);
+        }()); */
+
+        //转换为Boolean型： '',0,undefined,null,false,NaN转换为布尔值后都为false，其余都为true
+
+        //对象Study 声明：let 对象名={ 属性名：属性值；方法名：函数 }  let 对象名= new object() 组成：属性和方法
+        /*  let goods = {
+             name: '小米14Plus',
+             id: '001',
+             weight: '99',
+             address: 'China',
+             //方法的写法
+             intro:function(){
+                 console.log('我超级便宜哦');
+             }
+         }
+         goods.price = '9999元'
+         console.log(goods)
+         //对象的增，删，改，查
+         //增加  属性：对象名['新增属性名']=值/对象名.新增属性名=值； 方法：对象名['新增方法名']=function(){}/对象名.方法名=function(){}
+         goods.width = '9.99cm'
+         goods.Sayhello = function () {
+             console.log('我会说hello，快来买我吧')
+         }
+         goods.Sayhello()
+         //删除 delete 对象名.属性/方法
+         delete goods.width
+         //修改
+         goods.price = '8999元'
+         //查找 但是若是属性名或者方法命名中带 -  那就要使用 对象名['方法名']/对象名['方法名']()
+         console.log(goods.name); */
+        //便利对象
+        /* let arr=['red','green','blue']
+            for(let i in arr){
+                console.log(i);//便利出来的是数组的下标 索引号，但是是字符串型
+            } */
+        /*  for(let k in goods){
+             //console.log(k);//遍历出来的是对象的属性名，但便利对象必须使用 对象名[属性/方法名]
+             console.log(goods[k]);
+         }
+         let students=[
+             {name:'小明',age :18, gender :'男' ,class:'web3班'},
+             {name:'小丽',age :19, gender :'女' ,class:'web1班'},
+             {name:'小王',age :18, gender :'男' ,class:'java3班'},
+             {name:'小红',age :17, gender :'女' ,class:'web2班'}
+         ]
+         document.write(`<h3>学生信息表</h3>`)
+         document.write(`<table>`)
+         document.write(`<tr>
+             <th>姓名</th>
+             <th>年龄</th>
+             <th>性别</th>
+             <th>班级</th>
+             </tr>`)
+         for(let i=0;i<students.length;i++){
+             document.write(`
+                 <tr>
+                     <td>${students[i].name}</td>
+                     <td>${students[i].age}</td>
+                     <td>${students[i].gender}</td>
+                     <td>${students[i].class}</td>
+                 </tr>
+             `)
+         }
+         document.write(`</table>`) */
+
+        /* //随机点名案例
+        let arr =['张三','李四','王五','张麻子']
+        let random =Math.floor(Math.random()*arr.length)
+        document.write(arr[random])
+        arr.splice(random,1)
+        console.log(arr); */
+
+        /* //生成随机颜色
+        let r = Math.floor(Math.random() * 256)
+        function getColor(flag = true) {
+            if (flag) {
+                let color1 = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
+                let color = '#'
+                
+                for (let i = 0; i < 6; i++) {
+                    let num=Math.floor(Math.random()*color1.length)
+                    color =color+ color1[num]
+                }
+                return color           
+             }
+            else {
+                let r = Math.floor(Math.random() * 256)
+                let g = Math.floor(Math.random() * 256)
+                let b = Math.floor(Math.random() * 256)
+                return(`rgb(${r},${g},${b})`)
+            }
+
+        }
+        console.log(getColor(1)) 
+        console.log(getColor(0));
+        const div = document.querySelector('div')
+        div.style.backgroundColor=getColor() */
+           
+    </script>
+    
+</body>
+
+</html>
