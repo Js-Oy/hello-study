@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="first">
+        <ul>
+            <li>hello I am first li</li>
+            <li>second</li>
+    
+        </ul>
+        <p>hello 我是兄弟</p>
+
+    </div>
+    <div class="second">
+        <ul>
+            <li>one </li>
+            <li>two</li>
+            <li>three</li>
+        </ul>
+    </div>
+    <div class="third">
+        <ul>
+            <li>one</li>
+            <li>two</li>
+            <li>third</li>
+        </ul>
+    </div>
+    <script>
+        //根据一个获取的元素，操作他的孩子，兄弟，父亲
+        //获取父节点：子节点.panentNode
+        //获取子节点：父节点.childern[下标号]，由于获取父节点之后，子节点以数组的形式排列,所以修改子节点的样式需要使用节点下标来选中对应的节点进行操作
+        //兄弟节点：  元素节点.previousElementSibling 选中上一个兄弟；元素节点.nextElementSibling 选中下一个兄弟
+        const ul=document.querySelector('ul')
+        ul.children[0].innerHTML='first li'
+        ul.nextElementSibling.innerHTML='second'
+        ul.parentNode.classList.add('hello')
+        //增加节点
+        //1.创建节点 
+        const div_add1 =document.createElement('div')
+        const div_add2 =document.createElement('div')
+        //2.追加节点     法一：父元素.appendChild(要插入的元素)：只能插入到最后一位；  法二：  父元素.insertBefore(要插入的元素，在哪个元素前面)
+        const div1 =document.querySelector('.first')
+        div1.appendChild(div_add1)
+        div1.insertBefore(div_add2,div1.children[0])//这种方法可以永远把要插入的元素放在第一位
+        //3.克隆节点：元素.cloneNode(布尔值) 若为true，则代表克隆元素及其内容 若为false 则代表只克隆标签名
+        const ul1=document.querySelector('.second ul')
+        const li1= ul1.children[0].cloneNode(true)//克隆第一个节点值,并将其赋值给li1
+        ul1.appendChild(li1)//在末尾添加克隆的li1
+        //删除节点： 父元素.removeChild(要删除的元素)
+        const ul2=document.querySelector('.third ul')
+        ul2.removeChild(ul2.children[1])//删除第二个元素标签
+
+
+    </script>
+    
+</body>
+</html>
