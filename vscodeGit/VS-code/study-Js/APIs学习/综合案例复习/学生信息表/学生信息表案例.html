@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>学生信息管理</title>
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+  <h1>新增学员</h1>
+  <form class="info" autocomplete="off">
+    姓名：<input type="text" class="uname" name="uname" />
+    年龄：<input type="text" class="age" name="age" />
+    性别:
+    <select name="gender" class="gender">
+      <option value="男">男</option>
+      <option value="女">女</option>
+    </select>
+    薪资：<input type="text" class="salary" name="salary" />
+    就业城市：<select name="city" class="city">
+      <option value="北京">北京</option>
+      <option value="上海">上海</option>
+      <option value="广州">广州</option>
+      <option value="深圳">深圳</option>
+      <option value="曹县">曹县</option>
+    </select>
+    <button class="add">录入</button>
+  </form>
+
+  <h1>就业榜</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>薪资</th>
+        <th>就业城市</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+  <script>
+    //1.获取信息
+    const name=document.querySelector('.info .uname')
+    const age =document.querySelector('.info .age')
+    const gender= document.querySelector('.info .gender')
+    const salary=document.querySelector('.info .salary')
+    const city =document.querySelector('.info .city')//前面这五个，用于存储数据，并将添加到数组中
+    const tbody=document.querySelector('tbody')//获取tbody标签，用于渲染界面做准备
+    const select=document.querySelectorAll('.info [name]')
+    //2.创建一个新数组，用于传入获取的值
+    const peo=[]
+    //console.log(obj_pro);
+    //3.将录入的数据传入数组中,且阻止表单的默认提交事件
+    const info =document.querySelector('.info')
+    info.addEventListener('submit',function(e){
+
+      //7.点击新增，并验证表单（最后一步）
+      for(let i=0;i<select.length;i++){
+        if(select[i].value=='')
+        return alert('输入内容不能为空')
+      }
+      
+
+      //表单会默认跳转，为此应阻止表单的默认跳转行为
+      e.preventDefault()
+      //console.log(111);
+      //4.将信息传入对象中，并将其添加到数组中，以方便对数据的渲染
+      const obj_pro={
+      num:peo.length+1,
+      name:name.value,
+      age:age.value,
+      gender:gender.value,
+      salary:salary.value,
+      city:city.value
+    }
+    peo.push(obj_pro)
+    //console.log(peo)
+    //点击录入键后，每次都清空，表单中的数据
+    this.reset()
+    //每次点击录入后，执行渲染函数
+    render()
+    })
+
+    //5.进行数据渲染，创建一个函数，每次录入时，调用他
+    
+    function render(){
+      //但需要先清空tbody，把最新的数据渲染到其中
+      tbody.innerHTML=''
+      for(let i=0;i<peo.length;i++){
+      //每次都重新生成一行，所以要在for循环里写
+      const tr=document.createElement('tr')
+      tr.innerHTML=`
+          <td>${peo[i].num} </td>
+          <td>${peo[i].name}</td>
+          <td>${peo[i].age}</td>
+          <td>${peo[i].gender}</td>
+          <td>${peo[i].salary}</td>
+          <td>${peo[i].city}</td>
+          <td>
+            <a href="javascript: " data-num=${i}>删除</a>
+          </td> 
+    `
+      tbody.appendChild(tr)
+    }
+    }
+    //6.点击删除操作
+    tbody.addEventListener('click',function(e){
+      if(e.target.tagName=='A'){
+        peo.splice(e.target.dataset.num,1)//点击删除后，利用自定义属性，删除数组中点击的那组数据，并调用函数重新渲染网页
+        render()
+      }
+    })
+
+
+  </script>
+
+</body>
+
+</html>
