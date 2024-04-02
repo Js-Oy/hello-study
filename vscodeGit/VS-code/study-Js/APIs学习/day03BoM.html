@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+</head>
+<style>
+    .box{
+        height: 300px;
+        width: 300px;
+        background-color: pink;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+    }
+    a{
+        color: aquamarine;
+    }
+</style>
+<body>
+    <!-- 1-定时器 
+    1.间歇函数：        let time=setInterval(回调函数，间隔的秒数)
+    清楚：         clearInterval(time)
+    2.延时函数：        setTimeout(回调函数，等候的秒数)
+    清楚：         clearTimeout(time)
+    两者区别：间歇函数会一直执行，而回掉函数仅仅执行一次，将一段代码延迟执行
+    
+    <div class="box">我是一个小广告</div>
+    <script>
+        // 利用间歇函数，制作一个自动关闭的广告
+        //1.获取元素
+        const box=document.querySelector('.box')
+        //2.设置定时器
+        setTimeout(function(){
+         box.style.display='none'
+        },3000);
+        
+    </script>
+    -->
+
+    <!-- 
+        2-事件循环 event loop
+        简单来说，js中会将事件分为两种，一种放入为执行队列，另一种则放入任务队列
+        先执行 执行站中的同步任务，异步任务则放入任务队列中
+        一旦执行队列中的同步任务执行完毕，系统就会按次序读取任务队列中的异步任务，于是，被读取的异步任务结束等待状态，进入执行序列，开始执行
+
+    
+     <script>
+        console.log(111);
+        console.log(222);
+        setTimeout(function(){
+            console.log(333);
+        })
+        console.log(444);
+        //输出结果为1243，说明会先执行 执行序列中的代码后，再将任务队列中的异步任务计算优先级推送到执行序列中运行
+     </script>
+
+    -->
+
+    <!--3-location对象 
+        是window里面的对象可以进行跳转操作
+        经常用href 利用js的方法去跳转页面
+        location.href='网址' 
+     
+     <a href="#">支付完成<span>5</span>秒后自动跳转</a>
+     <form action="">
+        <input type="text"name="uname">
+        <input type="password" name="password">
+        <button>刷新</button>
+
+     </form>
+     <script>
+        //案例：完成支付5秒后自动跳转到百度页面
+        let num=5
+        const a=document.querySelector('a')
+        let time=setInterval(function(){
+            num--
+            a.innerHTML=`<a href="#">支付完成<span>${num}</span>秒后自动跳转</a>`
+            if(num==0){
+                clearInterval(time)
+                location.href='http://www.baidu.com'//可以自行跳转到百度界面，从中制作自动跳转网页
+            }
+        },1000)
+        //利用location.hash获取网页中表单提交的内容。在网页中输入location.hash就能得到
+        //利用location对象进行刷新
+        const btn=document.querySelector('button')
+        btn.addEventListener('click',function(){
+            location.reload()//强制刷新location.reload(true) ctrl+F5强制刷新
+        })
+    </script>
+    -->
+
+    <!--4-navigator对象
+    通过userAgent检测浏览器的版本及平台
+    
+    这是pc端的界面
+    <script>
+        // 检测 userAgent（浏览器信息）
+        !(function () {
+          const userAgent = navigator.userAgent
+          // 验证是否为Android或iPhone
+          const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/)
+          const iphone = userAgent.match(/(iPhone\sOS)\s([\d_]+)/)
+          // 如果是Android或iPhone，则跳转至移动站点
+          if (android || iphone) {
+            location.href = 'http://m.itcast.cn'
+          }
+        })();
+        // !(function () { })();
+        !function () { }()
+      </script>
+    -->
+
+    <!-- 5-history对象
+    back()      可以实现后退功能
+    forward()   实现前进功能
+    go(参数)    前进/后退功能：参数如果是1前进一个页面，-1后退一个页面
+    
+    <button>后退</button>
+    <button>前进</button>
+    <script>
+        const back=document.querySelector('button:first-child')
+        const forward=back.nextElementSibling
+        back.addEventListener('click',function(){
+            //history.back()
+            history.go(-1)
+        })
+        forward.addEventListener('click',function(){
+            // history.forward()
+            history.go(1)
+        })
+    </script>
+    -->
+
+    <!-- 6-本地存储（只能存储字符串数据类型）
+        第一种：关闭浏览器窗口不会消失
+    语法：存储数据：localStorage.serltem('key','value') 以键值对形式存储,修改的话，直接修改value中的值就可以
+          获取数据： localStorage.getItem('key') 
+          删除本地存储：localStorage.removeItem('key')
+        第二种：关闭浏览器会消失
+        -sessionStorage(用法与localStorage相同)
+    
+        总：本地存储 存储复杂数据类型 无法直接使用 ；解决方法：需要将复杂数据类型转换为JSON字符串，再存储到本地
+        语法：JSON.stringify(复杂数据类型) 将复杂数据类型转换为字符串
+        JSON对象 属性和值都有引号，而且引号统一是双引号 如	{"uname":"用户名字","age":18,"gender":"男"}
+        语法：JSON.parse()  将JSON对象转换为字符串
+    
+    <script>
+        //localStorage.setItem('uname','名字')
+        //console.log(localStorage.getItem('uname'));
+        //本地存储存复杂数据类型 
+        const obj={
+            uname:'用户名字',
+            age:18,
+            gender:'男'
+        }
+        localStorage.setItem('obj',JSON.stringify(obj))//将复杂数据类型转换为字符串存储
+        console.log(JSON.parse(localStorage.getItem('obj')));//将JSON对象转换为字符串
+    </script>
+    -->
+</body>
+</html>
