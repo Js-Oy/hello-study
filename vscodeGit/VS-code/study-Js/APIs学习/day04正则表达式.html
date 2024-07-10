@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            display: inline-block;
+            width: 250px;
+            height: 30px;
+            vertical-align: middle;
+            line-height: 30px;
+            padding-left: 15px;
+        }
+
+        .error {
+            color: red;
+            background: url(./images/error1.png) no-repeat left center;
+        }
+
+        .right {
+            color: green;
+            background: url(./images/right.png) no-repeat left center;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <span></span>
+
+    <script>
+        //正则表达式使用：定义 cosnt reg=/要匹配的字符/
+        //test()测试方法：reg.test(被检测的字符串)
+        const str = 'hello 姜先生'
+        const reg = /hello/
+        console.log(reg.test(str));//返回结果true
+        console.log('------------------------');
+        //esec()在一个指定字符串中，执行一个搜索匹配，返回结果为一个数组
+        //语法：reg.exec(被检测的字符串)
+        //元字符：
+        //边界符：（表示位置，开头和结尾，必须用什么开头，什么结尾）精确匹配
+        //^: 表示匹配行首的文本(以谁开始)
+        //$:表示匹配行尾的文本(以谁结束) 如果^ $在一起，表示精确匹配
+        //量词：表示次数
+        //*重复0次或者更多次
+        //+ 1/n次；     ？：0/1次；    {n}；n次；   {n,}:n/更多；   {n,m}:n~m次；
+        //字符类（/d表示0~9）
+        //匹配字符的集合：[abc]表示包含a/b/c都可以;[^字母]除了这些字母
+        console.log(/^[abc]/.test('hello'));//false
+        console.log(/[abc]/.test('haha'));//true
+        console.log(/^[a-z]{5}$/.test('hello'));//true 以26个小写英文字母的任意一个开头或结尾，且只能出现5次
+        //案例：用户名验证
+        const re = /^[a-zA-Z0-9-_]{6,18}$/
+        const input = document.querySelector('input')
+        input.addEventListener('blur', function () {
+            if (re.test(this.value)) {
+                input.nextElementSlibing.innerHTML = 'right'
+                input.nextElementSibling.classList.add('right')
+            }
+            else {
+                input.nextElementSibling.innerHTML = '请输入6~18位的由字母，数字下划线组成的密码'
+                input.nextElementSibling.classList.add('error')
+            }
+        })
+        //修饰符：/正则表达式/修饰符
+        //i:正则匹配时字母不区分大小写；g：匹配所有满足正则表达式的结果
+        console.log(/^java$/i.test('JAva'));//加一个i表示不区分大小写
+        //方法：字符串.replace(/正则表达式/,'替换的文本')
+        const std = 'Java你好，我将荣波是一个傻逼'
+        const red = std.replace(/java/gi, '姜荣博的叠石邓江')//g匹配所有的结果，i不区分大小写
+        console.log(red);
+
+
+    </script>
+</body>
+
+</html>
