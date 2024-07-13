@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="javascript" class="example-form">
+        <input type="text" name="uname">
+        <br>
+        <input type="text" name="pword">
+        <br>
+        <input type="button" class="btn" value="提交">
+      
+    </form>
+    <!-- 注意!!!  必须表单内元素有name值才可以使用,如input -->
+    <!-- 使用serialize时需要引用form—serialize插件，快速手机表单元素值 -->
+     <script src="./lib/form-serialize.js"></script>
+     <script>
+        //需要先获取元素
+        const form=document.querySelector('.example-form')
+        document.querySelector('.btn').addEventListener('click',()=>{
+            // const data=serialize(form)//会以字符串的形式显示
+            const data =serialize(form,{hash:true,empty:true})
+            //以对象形式显示.也可以获取空值,方便我们进行判断是否有值
+            console.log(data);
+        })
+     </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <!-- 
+        axios库地址: https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js
+        省份数据地址: http://ajax-api.itheima.net/api/province
+    -->
+    <!--
+        新闻数据地址: http://hmajax.itheima.net/api/news   
+    -->
+    <!-- 
+    城市列表: http://hmajax.itheima.net/api/city
+    参数名: pname
+    值: 省份名字
+  -->
+    <script src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js'></script>
+    <script>
+        //1.axios函数基础认知
+        /* console.log(axios)
+        //使用axios函数 
+        axios({
+            url:'http://hmajax.itheima.net/api/province'
+        }).then(result =>{
+            console.log(result.data.list)
+            const data=result.data.list
+            document.querySelector('div').innerHTML=data.join('<br>')
+            
+        })
+        //result =>为一个箭头函数调用：function(result){ }
+       */
+
+       //2.url路径理解
+      /*  axios({
+        url:'http://hmajax.itheima.net/api/news'
+       }).then(result =>{
+        //const {data:{data}}=result//利用结构化的方式去获取信息
+        console.log(result.data.data)
+        const data=result.data.data
+        }) */
+
+        //url查询参数：1.使用params选项（axios）
+        axios({
+            url :'http://hmajax.itheima.net/api/city',
+            //查询参数
+            params:{
+                //键，值，
+                pname:'河南省'
+            }
+        }).then(result=>{
+            console.log(result)
+        })
+
+
+    </script>
+</body>
+</html>
