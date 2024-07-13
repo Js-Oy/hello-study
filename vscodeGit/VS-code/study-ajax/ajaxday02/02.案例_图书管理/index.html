@@ -44,7 +44,9 @@
             <span class="del">删除</span>
             <span class="edit">编辑</span>
           </td>
+          <br>
         </tr>
+        
       </tbody>
     </table>
   </div>
@@ -94,6 +96,7 @@
           <!-- 编辑表单 -->
           <form class="edit-form">
             <input type="hidden" class="id" name="id">
+            <!-- hidden 隐藏域，将一些不需要用户看到的数据，保存起来，给开发者使用 -->
             <div class="mb-3">
               <label for="bookname" class="form-label">书名</label>
               <input type="text" class="form-control bookname" placeholder="请输入书籍名称" name="bookname">
