@@ -15,10 +15,15 @@ document.querySelector('.btn-primary').addEventListener('click',()=>{
         data
     }).then(res=>{
         myAlert(true,'登陆成功')
-        console.log(res);
+        // console.log(res);
+        localStorage.setItem('token',res.data.token)
+        //延迟跳转，让提示框显示
+        setTimeout(() => {
+            location.href='../content/index.html'
+        }, 1500);
     }).catch(err=>{
         myAlert(false,err.response.data.message)
-        console.log(err);
+        // console.log(err)
 
         // alert(err.response.data.message)
         // document.querySelector('.code ').value=''
