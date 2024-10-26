@@ -4,6 +4,6 @@
 
 <template>
   <main>
-    首页
+   这里是首页
   </main>
 </template>
